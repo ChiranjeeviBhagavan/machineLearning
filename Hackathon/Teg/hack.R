@@ -23,9 +23,13 @@ c = read.csv("D:\\INSOFE\\TeG-Hack\\Hackathon_Medicare\\Hackathon\\Landscape\\Pl
 
 
 filenames <- list.files(pattern = "pbp_b.*.txt")
+filenames_exclude <- list.files(pattern = ".*vbid.txt")
 
 length(filenames)
-head(filenames,21)
+length(filenames_exclude)
+filenames = setdiff(filenames, filenames_exclude )
+
+head(filenames,30)
 
 plan_id = c$Plan_ID
 
@@ -77,5 +81,7 @@ benefit_dataSet = uni_bid_id
 #writeLines(colnames(uni_bid_id), sep = '\t')
 #bid_id %>% distinct( bid_id , .keep_all = TRUE)
 
-
+na <- sapply(cus_demo,function(x) sum(is.na(x)))
+na <- data.frame(na, (na/nrow(cus_demo)*100))
+na
 
