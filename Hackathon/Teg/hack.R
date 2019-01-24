@@ -22,7 +22,7 @@ c = read.csv("D:\\INSOFE\\TeG-Hack\\Hackathon_Medicare\\Hackathon\\Landscape\\Pl
 
 
 
-filenames <-list.files(pattern = ".*.txt")
+filenames <- list.files(pattern = "pbp_b.*.txt")
 
 length(filenames)
 head(filenames,21)
