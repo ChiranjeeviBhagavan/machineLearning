@@ -11,7 +11,7 @@ library(foreign)
 library(stringr)
 library(dplyr)
 library(tidyverse)
-install.packages("tidyverse")
+
 
 rm(list=ls(all=TRUE))
 
@@ -78,10 +78,21 @@ for (i in 1:length(filenames)){
 
 benefit_dataSet = uni_bid_id
 
+
+dim(benefit_dataSet)
+
 #writeLines(colnames(uni_bid_id), sep = '\t')
 #bid_id %>% distinct( bid_id , .keep_all = TRUE)
 
-na <- sapply(cus_demo,function(x) sum(is.na(x)))
-na <- data.frame(na, (na/nrow(cus_demo)*100))
+na <- sapply(benefit_dataSet,function(x) sum(is.na(x)))
+
+na <- data.frame(na, (na/nrow(benefit_dataSet)*100))
+
 na
+
+colnames(na) <- c("col","nrow","amount")
+
+head((uni_bid_id$pbp_b13d_maxplan_amt))
+
+
 
