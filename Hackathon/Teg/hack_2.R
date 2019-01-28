@@ -14,25 +14,26 @@ library(tidyverse)
 
 rm(list = ls())
 
-setwd("D:\\INSOFE\\TeG-Hack\\final_df3\\")
+setwd("D:\\INSOFE\\TeG-Hack\\final_df4\\")
 
-data = read.delim2("final_df3.csv",sep = ";", header=T,na.strings = c(NA,"?"," ","",".","NA"))
-typeof(data)
-data_amout = data[,c(colnames(data)[grep("_amt",colnames(data))])]
+data = read.delim2("final_df4.csv",sep = ";", header=T,na.strings = c(NA,"?"," ","",".","NA"))
 
-str(data_amout)
-
-data_amout = lapply(data_amout, as.numeric)
-
-
-data_no_amount = data [,setdiff(colnames(data),names(data_amout))]
-data = cbind(data_amout,data_no_amount)
-dim(data)
-
+data$pbp_b7c_copay_mc_amt_min
 
 na <- sapply(data,function(x) sum(is.na(x)))
 na <- data.frame(na, (na/nrow(data)*100))
 na
+
+
+data$PartC_Premium2
+
+output = data.frame(c$State,c$County,c$bid_id, c$Organization_Name, predictionError)
+
+names(output)=c('State','County', 'bid_id','Organization_Name', 'PredictionEnr')
+dim(output)
+str(output)
+
+write.csv(output,file="output_rd.csv",row.names=FALSE)
 
 
 
